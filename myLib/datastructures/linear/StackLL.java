@@ -1,11 +1,10 @@
-package myLib.datastructures;
+package myLib.datastructures.linear;
+import myLib.datastructures.nodes.DNode;
 
 public class StackLL extends SLL {
 	
 	public StackLL(DNode node) {
-		this.head = node;
-		this.tail = node;
-		this.len=1;
+		super(node);
 	}
 	
 	public void push(DNode node) {
@@ -13,7 +12,9 @@ public class StackLL extends SLL {
 	}
 	
 	public DNode pop() {
+		DNode rtrn = this.head;
 		super.DeleteHead();
+		return rtrn;
 	}
 	
 	public DNode top() {

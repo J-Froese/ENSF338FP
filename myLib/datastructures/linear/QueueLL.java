@@ -1,11 +1,10 @@
-package myLib.datastructures;
+package myLib.datastructures.linear;
+import myLib.datastructures.nodes.DNode;
 
 public class QueueLL extends SLL {
 	
 	public QueueLL(DNode node) {
-		this.head = node;
-		this.tail = node;
-		this.len=1;
+		super(node);
 	}
 	
 	public void enqueue(DNode node) {
@@ -13,7 +12,9 @@ public class QueueLL extends SLL {
 	}
 	
 	public DNode dequeue() {
+		DNode rtrn = this.head;
 		super.DeleteHead();
+		return rtrn;
 	}
 	
 	public DNode front() {
