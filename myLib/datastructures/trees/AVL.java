@@ -154,7 +154,7 @@ public class AVL extends BST{
             node.setLeft(rotateLeft(node.getLeft()));
             return rotateRight(node);
         }
-        if(balance < -1 && getBalance(node.getRight()) > 0) {
+        if(balance < -1 && getBalance(node.getRight()) <= 0) {
             return rotateLeft(node);
         }
         if(balance < -1 && getBalance(node.getRight()) > 0) {
