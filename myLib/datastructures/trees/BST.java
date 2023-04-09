@@ -142,9 +142,9 @@ public class BST {
     public void printInOrder() {
         if(this.root == null) {
             System.out.println("Unfortunately, the Tree is Empty");
-        } else {
-            printInOrder(this.root);
-        }
+        } 
+        printInOrder(this.root);
+        
     }
 
 

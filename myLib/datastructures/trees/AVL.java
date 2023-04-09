@@ -60,25 +60,10 @@ public class AVL extends BST{
         if(node == null) {
             return;
         }
-        orderTraversal(node.getLeft(), sorted);
         sorted.add(node.getData());
         orderTraversal(node.getRight(), sorted);
     }
 
-
-    /*insert and delete */
-    @Override
-    public void Insert(int val) {
-        this.root = insertHelper(this.root, val);
-    }
-
-    @Override
-    public void Insert(TNode node) {
-        this.root = insertHelper(this.root, node.getData());
-    }
-
-
-    /*Fix this code*/
     private TNode insertHelper(TNode node, int val) {
         if(node == null) {
             return new TNode(val, 0, null, null, null);
@@ -107,6 +92,16 @@ public class AVL extends BST{
         }
         return node;
        
+    }
+    /*insert and delete */
+    @Override
+    public void Insert(int val) {
+        this.root = insertHelper(this.root, val);
+    }
+
+    @Override
+    public void Insert(TNode node) {
+        this.root = insertHelper(this.root, node.getData());
     }
 
     @Override

@@ -21,9 +21,7 @@ public class TNode {
         this.parent = P;
         this.left = L;
         this.right = R;
-
     }
-
     /**
      * Setter methods that will 
      * @param data updates data member to new data
