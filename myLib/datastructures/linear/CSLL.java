@@ -2,7 +2,8 @@ package myLib.datastructures.linear;
 import myLib.datastructures.nodes.DNode;
 
 public class CSLL extends SLL {
-
+	
+	public CSLL() {}
 	public CSLL(DNode node) {
 		super(node);
 	}
@@ -22,7 +23,7 @@ public class CSLL extends SLL {
 	/**- InsertTail(node)
 	o Inserts node object at the tail of the list**/
 	public void InsertTail(DNode node) {
-		this.tail.setNext(node);
+		if(this.tail!=null) {this.tail.setNext(node);}
 		this.tail = node;
 		this.len+=1;
 		this.sort=false;
@@ -87,6 +88,14 @@ public class CSLL extends SLL {
 		}
 		while (!this.sort) {
 			this.sort = true;
+			if(this.head.getData() > this.head.getNext().getData()) {
+				this.sort = false;
+				DNode temp = this.head.getNext();
+				this.head.setNext(temp.getNext());
+				temp.setNext(this.head);
+				this.tail.setNext(temp);
+				this.head = temp;
+			}
 			DNode prev = this.head;
 			DNode crnt = prev.getNext();
 			DNode next = crnt.getNext();
@@ -104,6 +113,7 @@ public class CSLL extends SLL {
 				crnt = next;
 				next = next.getNext();
 			}
+			this.tail = crnt;
 		}
 	}
 }

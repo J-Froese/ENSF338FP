@@ -3,15 +3,16 @@ import myLib.datastructures.nodes.DNode;
 
 public class QueueLL extends SLL {
 	
+	public QueueLL() {}
 	public QueueLL(DNode node) {
 		super(node);
 	}
 	
-	public void enqueue(DNode node) {
+	public void enque(DNode node) {
 		super.InsertTail(node);
 	}
 	
-	public DNode dequeue() {
+	public DNode deque() {
 		DNode rtrn = this.head;
 		super.DeleteHead();
 		return rtrn;

@@ -3,6 +3,7 @@ import myLib.datastructures.nodes.DNode;
 
 public class StackLL extends SLL {
 	
+	public StackLL() {}
 	public StackLL(DNode node) {
 		super(node);
 	}

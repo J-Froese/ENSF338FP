@@ -3,6 +3,7 @@ import myLib.datastructures.nodes.DNode;
 
 public class CDLL extends DLL {
 	
+	public CDLL() {}
 	public CDLL (DNode node) {
 		super(node);
 	}
@@ -10,7 +11,7 @@ public class CDLL extends DLL {
 	o Inserts node object at head of the list**/
 	public void InsertHead(DNode node) {
 		node.setNext(this.head);
-		this.head.setPrev(node);
+		if(this.head!=null) {this.head.setPrev(node);}
 		this.head = node;
 		this.len+=1;
 		this.sort=false;
@@ -24,7 +25,7 @@ public class CDLL extends DLL {
 	/**- InsertTail(node)
 	o Inserts node object at the tail of the list**/
 	public void InsertTail(DNode node) {
-		this.tail.setNext(node);
+		if(this.tail!=null) {this.tail.setNext(node);}
 		node.setPrev(this.tail);
 		this.tail = node;
 		this.len+=1;
@@ -91,21 +92,25 @@ public class CDLL extends DLL {
 			this.sort = true;
 			DNode prev = this.head;
 			DNode next = prev.getNext();
-			while (next!=this.tail) {
+			for (int i = this.len; i>1; i--) {
 				if(next.getData() < prev.getData()) {
 					this.sort = false;
 					DNode tempN = next.getNext();
 					DNode tempP = prev.getPrev();
+					tempN.setPrev(prev);
+					tempP.setNext(next);
 					next.setPrev(tempP);
 					next.setNext(prev);
 					prev.setPrev(next);
 					prev.setNext(tempN);
 					prev = next;
-					next = prev.getNext();
+					next = next.getNext();
 				}
 				prev = next;
 				next = next.getNext();
 			}
+			this.tail = prev;
+			this.head = prev.getNext();
 		}
 	}
 }

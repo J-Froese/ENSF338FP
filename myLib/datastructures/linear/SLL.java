@@ -5,17 +5,17 @@ public class SLL {
 	protected DNode head = null;
 	protected DNode tail = null;
 	protected int len = 0;
-	protected boolean sort = false;
+	protected boolean sort = true;
 
 	/**This is a Singly Linked List Data structure that will implement the following:
 	- Uses a head object of the base class Node (to be implemented as part of the base classes
 	mentioned previously) and a tail object to keep track of the end of the list 
 	- Has an integer member variable to keep track of the size of the List (update when necessary)**/
+	public SLL() {}
 	public SLL(DNode node) {
 		this.head = node;
 		this.tail = node;
 		this.len=1;
-		this.sort=true;
 	}
 	/**- InsertHead(node)
 	o Inserts node object at head of the list**/
@@ -31,7 +31,7 @@ public class SLL {
 	/**- InsertTail(node)
 	o Inserts node object at the tail of the list**/
 	public void InsertTail(DNode node) {
-		this.tail.setNext(node);
+		if(this.tail!=null) {this.tail.setNext(node);}
 		this.tail = node;
 		this.len+=1;
 		this.sort=false;
@@ -89,7 +89,9 @@ public class SLL {
 			}
 			crnt.setNext(node);
 			node.setNext(next);
+			this.len+=1;
 		}
+		this.sort = true;
 	}
 	/**- Search(node)
 	o Looks up node in the list
@@ -188,6 +190,13 @@ public class SLL {
 		}
 		while (!this.sort) {
 			this.sort = true;
+			if(this.head.getData() > this.head.getNext().getData()) {
+				this.sort = false;
+				DNode temp = this.head.getNext();
+				this.head.setNext(temp.getNext());
+				temp.setNext(this.head);
+				this.head = temp;
+			}
 			DNode prev = this.head;
 			DNode crnt = prev.getNext();
 			DNode next = crnt.getNext();
@@ -205,6 +214,7 @@ public class SLL {
 				crnt = next;
 				next = next.getNext();
 			}
+			this.tail = crnt;
 		}
 	}
 	/**- Clear()
@@ -237,7 +247,7 @@ public class SLL {
 	public void Print() {
 		System.out.println("List Length: "+this.len+"\nSorted Status: "+this.sort+"\n List Content:");
 		DNode pos = this.head;
-		for (int i=1; i<this.len+1; i++) {
+		for (int i=1; i<this.len+1&&pos!=null; i++) {
 			System.out.println("Position: "+i+"\tContent: "+pos.getData());
 			pos = pos.getNext();
 		}
