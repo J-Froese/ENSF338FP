@@ -1,11 +1,10 @@
-package myLib.datastructures;
+package myLib.datastructures.linear;
+import myLib.datastructures.nodes.DNode;
 
 public class CSLL extends SLL {
 
 	public CSLL(DNode node) {
-		this.head = node;
-		this.tail = node;
-		this.len=1;
+		super(node);
 	}
 	/**- InsertHead(node)
 	o Inserts node object at head of the list**/
@@ -14,7 +13,7 @@ public class CSLL extends SLL {
 		this.head = node;
 		this.len+=1;
 		this.sort=false;
-		if (this.len=1) {
+		if (this.len==1) {
 			this.tail = node;
 		} else {
 			this.tail.setNext(this.head);
@@ -27,28 +26,11 @@ public class CSLL extends SLL {
 		this.tail = node;
 		this.len+=1;
 		this.sort=false;
-		if (this.len=1) {
+		if (this.len==1) {
 			this.head = node;
 		} else {
 			this.tail.setNext(this.head);
 		}
-	}
-	/**- SortedInsert(node)
-	o Inserts node object in its proper position in a sorted list
-	o Must check for list sort validity
-	▪ If list is found to be out of order, it must call the sort function first before
-	inserting
-	▪ Note that you should only execute sort if the list is found to be out of order
-	to avoid slowing down the insertion by executing sorting every time you
-	insert
-	▪ Might need to implement a helper function isSorted(), or find a creative
-	way to know if the list is sorted**/
-	public void SortedInsert(node) {
-		if (!this.sort) {
-			Sort();
-		}
-		int n = node.getData();
-		 
 	}
 	/**- DeleteHead()
 	o Delete head node**/
@@ -103,15 +85,14 @@ public class CSLL extends SLL {
 			this.sort = true;
 			return;
 		}
-		boolean sorted = false;
-		while (!sorted) {
-			sorted = true;
+		while (!this.sort) {
+			this.sort = true;
 			DNode prev = this.head;
 			DNode crnt = prev.getNext();
 			DNode next = crnt.getNext();
 			while (next!=this.head) {
 				if (next.getData() < crnt.getData()) {
-					sorted = false;
+					this.sort = false;
 					DNode temp = next.getNext();
 					prev.setNext(next);
 					next.setNext(crnt);
@@ -119,8 +100,8 @@ public class CSLL extends SLL {
 					next = crnt;
 					crnt = prev.getNext();
 				}
-				prev = prev.getNext();
-				crnt = crnt.getNext();
+				prev = crnt;
+				crnt = next;
 				next = next.getNext();
 			}
 		}

@@ -1,10 +1,11 @@
-package myLib.datastructures;
+package myLib.datastructures.linear;
+import myLib.datastructures.nodes.DNode;
 
 public class SLL {
-	private DNode head = null;
-	private DNode tail = null;
-	private int len = 0;
-	private boolean sort = false;
+	protected DNode head = null;
+	protected DNode tail = null;
+	protected int len = 0;
+	protected boolean sort = false;
 
 	/**This is a Singly Linked List Data structure that will implement the following:
 	- Uses a head object of the base class Node (to be implemented as part of the base classes
@@ -14,6 +15,7 @@ public class SLL {
 		this.head = node;
 		this.tail = node;
 		this.len=1;
+		this.sort=true;
 	}
 	/**- InsertHead(node)
 	o Inserts node object at head of the list**/
@@ -22,7 +24,7 @@ public class SLL {
 		this.head = node;
 		this.len+=1;
 		this.sort=false;
-		if (this.len=1) {
+		if (this.len==1) {
 			this.tail = node;
 		}
 	}
@@ -33,7 +35,7 @@ public class SLL {
 		this.tail = node;
 		this.len+=1;
 		this.sort=false;
-		if (this.len=1) {
+		if (this.len==1) {
 			this.head = node;
 		}
 	}
@@ -42,14 +44,14 @@ public class SLL {
 	▪ Ex. Insert(node ,5) → inserts node to 5th position in list**/
 	public void Insert(DNode node, int pos) {
 		if (pos > this.len) {
-			insertTail(node);
+			InsertTail(node);
 			return;
 		} else if (pos <= 1) {
-			insertHead(node);
+			InsertHead(node);
 			return;
 		}
 		DNode prev = this.head;
-		dNode next = this.head.getNext();
+		DNode next = this.head.getNext();
 		for (int i=1; i<pos; i++) {
 			prev = next;
 			next = prev.getNext();
@@ -74,12 +76,21 @@ public class SLL {
 			Sort();
 		}
 		int n = node.getData();
-		DNode pos = this.head;
-		while (n<pos.getData() && pos!=this.tail) {// - finish
-			pos = pos.getNext();
+		if (n < this.head.getData()) {
+			InsertHead(node);
+		} else if (n > this.tail.getData()) {
+			InsertTail(node);
+		} else {
+			DNode crnt = this.head;
+			DNode next = this.head.getNext();
+			while (next.getData() < n) {
+				crnt = next;
+				next = next.getNext();
+			}
+			crnt.setNext(node);
+			node.setNext(next);
 		}
 	}
-
 	/**- Search(node)
 	o Looks up node in the list
 	▪ If found it returns the object
@@ -134,10 +145,10 @@ public class SLL {
 			this.len = 0;
 		} else {
 			if (node == this.head) {
-				deleteHead();
+				DeleteHead();
 				return;
 			} else if (node == this.tail) {
-				deleteTail();
+				DeleteTail();
 				return;
 			}
 			DNode prev = this.head;
@@ -175,15 +186,14 @@ public class SLL {
 			this.sort = true;
 			return;
 		}
-		boolean sorted = false;
-		while (!sorted) {
-			sorted = true;
+		while (!this.sort) {
+			this.sort = true;
 			DNode prev = this.head;
 			DNode crnt = prev.getNext();
 			DNode next = crnt.getNext();
 			while (next!=null) {
 				if (next.getData() < crnt.getData()) {
-					sorted = false;
+					this.sort = false;
 					DNode temp = next.getNext();
 					prev.setNext(next);
 					next.setNext(crnt);
@@ -191,8 +201,8 @@ public class SLL {
 					next = crnt;
 					crnt = prev.getNext();
 				}
-				prev = prev.getNext();
-				crnt = crnt.getNext();
+				prev = crnt;
+				crnt = next;
 				next = next.getNext();
 			}
 		}

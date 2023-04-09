@@ -1,4 +1,4 @@
-package myLib.datastructures;
+package myLib.datastructures.nodes;
 
 public class DNode {
 	private int data;
