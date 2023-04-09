@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"myLib.datastructures.linear","l":"CDLL"},{"p":"myLib.datastructures.linear","l":"CSLL"},{"p":"myLib.datastructures.linear","l":"DLL"},{"p":"myLib.datastructures.linear","l":"QueueLL"},{"p":"myLib.datastructures.linear","l":"SLL"},{"p":"myLib.datastructures.linear","l":"StackLL"}]

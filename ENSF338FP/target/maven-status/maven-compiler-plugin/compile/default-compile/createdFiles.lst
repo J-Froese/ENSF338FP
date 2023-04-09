@@ -1,0 +1,10 @@
+myLib\datastructures\nodes\TNode.class
+myLib\datastructures\trees\BST.class
+myLib\datastructures\linear\StackLL.class
+myLib\datastructures\trees\AVL.class
+myLib\datastructures\linear\CSLL.class
+myLib\datastructures\linear\DLL.class
+myLib\datastructures\linear\QueueLL.class
+myLib\datastructures\linear\CDLL.class
+myLib\datastructures\linear\SLL.class
+myLib\datastructures\nodes\DNode.class

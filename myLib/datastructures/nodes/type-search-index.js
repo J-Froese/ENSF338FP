@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"myLib.datastructures.nodes","l":"DNode"},{"p":"myLib.datastructures.nodes","l":"TNode"}]
