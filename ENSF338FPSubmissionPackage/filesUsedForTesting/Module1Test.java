@@ -18,6 +18,11 @@ public class Module1Test {
 		System.out.println();
 		sOne.Print();
 		sTwo.Print();
+		sOne.DeleteHead();
+		sTwo.DeleteTail();
+		System.out.println();
+		sOne.Print();
+		sTwo.Print();
 		
 		DNode nTwo = new DNode(2);//DLLS
 		DLL dOne = new DLL(nTwo);
@@ -34,6 +39,11 @@ public class Module1Test {
 		System.out.println();
 		dOne.Print();
 		dTwo.Print();
+		dOne.DeleteHead();
+		dTwo.DeleteTail();
+		System.out.println();
+		dOne.Print();
+		dTwo.Print();
 		
 		StackLL s = new StackLL(new DNode(4));
 		QueueLL q = new QueueLL();
@@ -46,6 +56,11 @@ public class Module1Test {
 		q.Print();
 		System.out.println(s.pop());
 		System.out.println(q.deque());
+		System.out.println();
+		s.Print();
+		q.Print();
+		s.DeleteHead();
+		q.DeleteTail();
 		System.out.println();
 		s.Print();
 		q.Print();

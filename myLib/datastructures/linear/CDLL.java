@@ -63,6 +63,7 @@ public class CDLL extends DLL {
 			this.tail = prev;
 			this.head.setPrev(this.tail);
 			this.tail.setNext(this.head);
+			this.len-=1;
 		}
 	}
 	/**- Sort()
